@@ -297,6 +297,10 @@ p {
     max-width: 280px;
     margin: 0 auto;
   }
+
+  .hero-photo-content {
+    top: -50%;
+  }
 }
 
 /* Company hero (full-bleed, like the main hero) */

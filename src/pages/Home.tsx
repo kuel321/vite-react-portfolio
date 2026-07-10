@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 import { posts } from '../data/posts'
+import GithubWidget from '../components/GithubWidget'
 
 export default function Home() {
   return (
@@ -112,6 +113,17 @@ export default function Home() {
           </div>
         </div>
       </motion.a>
+      <section className="container section">
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.4 }}
+        >
+          On GitHub
+        </motion.h2>
+        <GithubWidget />
+      </section>
 
       <section className="container section">
         <div className="section-heading">

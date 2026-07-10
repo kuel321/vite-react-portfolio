@@ -607,3 +607,134 @@ p {
   background-clip: text;
   color: transparent;
 }
+
+/* GitHub card */
+.github-card {
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  border-radius: 20px;
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.github-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.github-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.github-avatar-skeleton {
+  background: var(--bg);
+}
+
+.github-card-header-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.github-name {
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+}
+
+.github-bio {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.github-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.github-cta {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.github-heatmap-wrap {
+  display: block;
+  background: #eeeeee;
+  border-radius: 12px;
+  padding: 0.85rem;
+  overflow-x: auto;
+}
+
+.github-heatmap {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 480px;
+}
+
+.github-repos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.github-repo-card {
+  display: block;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.github-repo-card:hover {
+  border-color: var(--ebony);
+  transform: translateY(-2px);
+}
+
+.github-repo-name {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.github-repo-desc {
+  font-size: 0.82rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.github-repo-meta {
+  display: flex;
+  gap: 0.85rem;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 640px) {
+  .github-card {
+    padding: 1.25rem;
+  }
+
+  .github-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

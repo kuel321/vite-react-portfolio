@@ -611,7 +611,7 @@ p {
 /* GitHub card */
 .github-card {
   border: 1px solid var(--border);
-  background: var(--bg-elevated);
+  background: transparent;
   border-radius: 20px;
   padding: 1.75rem;
   margin-top: 1.5rem;
@@ -635,7 +635,8 @@ p {
 }
 
 .github-avatar-skeleton {
-  background: var(--bg);
+  background: transparent;
+  border: 1px solid var(--border);
 }
 
 .github-card-header-text {
@@ -645,7 +646,7 @@ p {
 
 .github-name {
   font-weight: 700;
-  color: var(--text);
+  color: var(--gh-main, var(--text));
   margin-bottom: 0.15rem;
 }
 
@@ -694,19 +695,19 @@ p {
   padding: 0.9rem 1rem;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: transparent;
   text-decoration: none;
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .github-repo-card:hover {
-  border-color: var(--ebony);
+  border-color: var(--gh-accent, var(--ebony));
   transform: translateY(-2px);
 }
 
 .github-repo-name {
   font-weight: 600;
-  color: var(--text);
+  color: var(--gh-main, var(--text));
   margin-bottom: 0.25rem;
   font-size: 0.95rem;
 }
@@ -775,8 +776,8 @@ p {
 }
 
 /* Embeddable widget page (rendered inside an <iframe>, no site chrome).
-   Body keeps the normal dark theme background so the widget looks the
-   same self-contained "card" no matter what page it's embedded into. */
+   Body background is cleared to transparent in EmbedGithubWidget.tsx so
+   the widget blends into whatever page it's embedded in. */
 .embed-page {
   padding: 0.75rem;
   display: flex;

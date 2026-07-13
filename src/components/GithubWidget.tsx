@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react'
+import type { CSSProperties } from 'react'
 import { motion } from 'framer-motion'
 
 const DEFAULT_USERNAME = 'kuel321'
-const HEATMAP_COLOR = '434827'
+const DEFAULT_ACCENT = '434827'
+const HEX_RE = /^[0-9a-fA-F]{3,8}$/
 
 interface GithubWidgetProps {
     username?: string
+    /** Hex color, no '#', e.g. "8a8f74". Used for the heatmap + hover accents. */
+    accentColor?: string
+    /** Hex color, no '#', e.g. "e8e6dc". Used for primary text. */
+    mainColor?: string
 }
 
 interface GithubProfile {
@@ -28,7 +34,14 @@ interface GithubRepo {
     fork: boolean
 }
 
-export default function GithubWidget({ username = DEFAULT_USERNAME }: GithubWidgetProps) {
+export default function GithubWidget({
+    username = DEFAULT_USERNAME,
+    accentColor,
+    mainColor,
+}: GithubWidgetProps) {
+    const accent = accentColor && HEX_RE.test(accentColor) ? accentColor : DEFAULT_ACCENT
+    const main = mainColor && HEX_RE.test(mainColor) ? mainColor : undefined
+
     const [profile, setProfile] = useState<GithubProfile | null>(null)
     const [repos, setRepos] = useState<GithubRepo[]>([])
     const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
@@ -78,9 +91,15 @@ export default function GithubWidget({ username = DEFAULT_USERNAME }: GithubWidg
         )
     }
 
+    const themeStyle = {
+        '--gh-accent': `#${accent}`,
+        ...(main ? { '--gh-main': `#${main}` } : {}),
+    } as CSSProperties
+
     return (
         <motion.div
             className="github-card"
+            style={themeStyle}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -119,7 +138,7 @@ export default function GithubWidget({ username = DEFAULT_USERNAME }: GithubWidg
                 className="github-heatmap-wrap"
             >
                 <img
-                    src={`https://ghchart.rshah.org/${HEATMAP_COLOR}/${username}`}
+                    src={`https://ghchart.rshah.org/${accent}/${username}`}
                     alt={`${username}'s GitHub contribution graph`}
                     className="github-heatmap"
                 />

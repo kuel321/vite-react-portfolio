@@ -745,8 +745,14 @@ p {
   color: var(--text-dim);
 }
 
-.github-embed-note {
+.github-embed-toggle {
   margin-top: 1.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.github-embed-note {
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 0.85rem;
 }

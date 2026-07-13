@@ -1,10 +1,13 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
 import { posts } from '../data/posts'
 import GithubWidget from '../components/GithubWidget'
 
 export default function Home() {
+  const [showEmbed, setShowEmbed] = useState(false)
+
   return (
     <PageWrapper>
       <section className="hero-photo">
@@ -123,18 +126,37 @@ export default function Home() {
           On GitHub
         </motion.h2>
         <GithubWidget />
-        <p className="github-embed-note">
-          Want this widget on your own site? Drop this in your HTML — swap{' '}
-          <code>torvalds</code> for your own GitHub username. It has no
-          background, so it blends right in. Optional <code>accent</code> and{' '}
-          <code>main</code> params (hex, no #) theme the heatmap/hover color
-          and the primary text color:
-        </p>
-        <pre className="github-embed-code">
-          <code>
-            {'<iframe src="https://lukeshort.dev/embed/github-widget?user=torvalds&accent=8a8f74&main=e8e6dc" width="700" height="480" style="border:0"></iframe>'}
-          </code>
-        </pre>
+        <button
+          type="button"
+          className="btn btn-ghost github-embed-toggle"
+          onClick={() => setShowEmbed((v) => !v)}
+        >
+          {showEmbed ? 'Hide embed code' : 'Want to embed this?'} →
+        </button>
+        <AnimatePresence>
+          {showEmbed && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              style={{ overflow: 'hidden' }}
+            >
+              <p className="github-embed-note">
+                Drop this in your HTML — swap <code>torvalds</code> for your
+                own GitHub username. It has no background, so it blends right
+                in. Optional <code>accent</code> and <code>main</code> params
+                (hex, no #) theme the heatmap/hover color and the primary
+                text color:
+              </p>
+              <pre className="github-embed-code">
+                <code>
+                  {'<iframe src="https://lukeshort.dev/embed/github-widget?user=torvalds&accent=8a8f74&main=e8e6dc" width="700" height="480" style="border:0"></iframe>'}
+                </code>
+              </pre>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       <section className="container section">

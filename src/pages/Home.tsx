@@ -123,6 +123,15 @@ export default function Home() {
           On GitHub
         </motion.h2>
         <GithubWidget />
+        <p className="github-embed-note">
+          Want this widget on your own site? Drop this in your HTML — swap{' '}
+          <code>yourusername</code> for any GitHub username:
+        </p>
+        <pre className="github-embed-code">
+          <code>
+            {'<iframe src="https://lukeshort.dev/embed/github-widget?user=yourusername" width="700" height="480" style="border:0"></iframe>'}
+          </code>
+        </pre>
       </section>
 
       <section className="container section">

@@ -6,10 +6,20 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
+import EmbedGithubWidget from './pages/EmbedGithubWidget'
 import NotFound from './pages/NotFound'
 
 export default function App() {
   const location = useLocation()
+
+  if (location.pathname.startsWith('/embed/')) {
+    return (
+      <Routes location={location}>
+        <Route path="/embed/github-widget" element={<EmbedGithubWidget />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    )
+  }
 
   return (
     <div className="app-shell">

@@ -125,14 +125,14 @@ export default function Home() {
         <GithubWidget />
         <p className="github-embed-note">
           Want this widget on your own site? Drop this in your HTML — swap{' '}
-          <code>yourusername</code> for any GitHub username. It has no
+          <code>torvalds</code> for your own GitHub username. It has no
           background, so it blends right in. Optional <code>accent</code> and{' '}
           <code>main</code> params (hex, no #) theme the heatmap/hover color
           and the primary text color:
         </p>
         <pre className="github-embed-code">
           <code>
-            {'<iframe src="https://lukeshort.dev/embed/github-widget?user=yourusername&accent=8a8f74&main=e8e6dc" width="700" height="480" style="border:0"></iframe>'}
+            {'<iframe src="https://lukeshort.dev/embed/github-widget?user=torvalds&accent=8a8f74&main=e8e6dc" width="700" height="480" style="border:0"></iframe>'}
           </code>
         </pre>
       </section>
